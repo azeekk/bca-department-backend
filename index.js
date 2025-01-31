@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(cors({
-    allowedOrigins :["http://localhost:5173","http://localhost:5174","https://azeekk.github.io/bca-department/"],
+    allowedOrigins :["http://localhost:5173","http://localhost:5174","https://azeekk.github.io/bca-department/","bca-department-backend-production-3e1a.up.railway.app"],
     methods: ['GET','POST','PUT','DELETE'],
     allowedHeader: ['Content-type'],
 }))
@@ -20,7 +20,7 @@ app.use(cors({
 
 app.get( '/', (request,response) => {
     console.log(request)
-    return response.status(234).send('welcome to mern stack')
+    return response.status(200).send('welcome to mern stack')
 })
 
 
@@ -64,6 +64,11 @@ app.get('/api/collections', async (request,response) => {
             console.log(badocuments);
             console.log(bcomdocuments);
             response.json({
+                BCA: bcadocuments,
+                BA: badocuments,
+                Bcom: bcomdocuments
+            });
+            response.send({
                 BCA: bcadocuments,
                 BA: badocuments,
                 Bcom: bcomdocuments
