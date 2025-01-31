@@ -27,8 +27,7 @@ app.get( '/', (request,response) => {
 
 //connect database
 
-const uri = 'mongodb+srv://azeekkalathil99:rdx0iaKub9fC7cen@cluster0.ptj38.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; // or your MongoDB Atlas URI
-
+const uri = mongoDBURL;
 
 // Replace with your database and collection name
 const dbName = 'Teachers';
@@ -39,7 +38,7 @@ const bcomcollectionName = 'Bcom';
 app.get('/api/collections', async (request,response) => {
     
         // Create a new MongoClient
-        const client = new MongoClient(uri);
+        const client = new MongoClient(mongoDBURL);
     
         try {
             // Connect to the MongoDB server
@@ -64,9 +63,11 @@ app.get('/api/collections', async (request,response) => {
             console.log(bcadocuments);
             console.log(badocuments);
             console.log(bcomdocuments);
-            response.json(bcadocuments)
-            response.json(badocuments)
-            response.json(bcomdocuments)
+            response.json({
+                BCA: bcadocuments,
+                BA: badocuments,
+                Bcom: bcomdocuments
+            });
             
         } catch (err) {
             console.error('Error:', err);
