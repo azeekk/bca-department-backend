@@ -34,6 +34,8 @@ const dbName = 'Teachers';
 const bcacollectionName = 'BCA';
 const bacollectionName = 'BA';
 const bcomcollectionName = 'Bcom';
+const bbacollectionName = 'BBA';
+const bsccollectionName = 'BSC';
 
 app.get('/api/collections', async (request,response) => {
     
@@ -57,21 +59,30 @@ app.get('/api/collections', async (request,response) => {
             const bcadocuments = await bcacollection.find({}).toArray();
             const badocuments = await bacollection.find({}).toArray();
             const bcomdocuments = await bcomcollection.find({}).toArray();
+            const bbadocuments = await bbacollection.find({}).toArray();
+            const bscdocuments = await bsccollection.find({}).toArray();
     
             // Print the documents
             console.log('Documents in the collection:');
             console.log(bcadocuments);
             console.log(badocuments);
             console.log(bcomdocuments);
+            console.log(bbadocuments);
+            console.log(bscdocuments)
+            
             response.json({
                 BCA: bcadocuments,
                 BA: badocuments,
-                Bcom: bcomdocuments
+                Bcom: bcomdocuments,
+                BBA:bbadocuments,
+                BSC:bscdocuments
             });
             response.send({
                 BCA: bcadocuments,
                 BA: badocuments,
-                Bcom: bcomdocuments
+                Bcom: bcomdocuments,
+                BBA:bbadocuments,
+                BSC:bscdocuments
             });
             
         } catch (err) {
