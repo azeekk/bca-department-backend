@@ -54,6 +54,8 @@ app.get('/api/collections', async (request,response) => {
             const bcacollection = db.collection(bcacollectionName);
             const bacollection = db.collection(bacollectionName);
             const bcomcollection = db.collection(bcomcollectionName);
+            const bbacollection = db.collection(bbacollectionName);
+            const bsccollection = db.collection(bsccollectionName);
     
             // Retrieve documents from the collection
             const bcadocuments = await bcacollection.find({}).toArray();
