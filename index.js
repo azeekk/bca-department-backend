@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(cors({
-    allowedOrigins :["http://localhost:5173","http://localhost:5174","https://azeekk.github.io/bca-department/","https://bca-department-backend-production.up.railway.app/api/collections"],
+    allowedOrigins :["https://azeekk.github.io/bca-department/","https://bca-department-backend-production.up.railway.app/api/collections","https://azeekk.github.io"],
     methods: ['GET','POST','PUT','DELETE'],
     allowedHeader: ['Content-type'],
 }))
