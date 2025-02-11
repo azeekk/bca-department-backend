@@ -36,6 +36,7 @@ const bacollectionName = 'BA';
 const bcomcollectionName = 'Bcom';
 const bbacollectionName = 'BBA';
 const bsccollectionName = 'BSC';
+const librarycollectionName = 'Library'
 
 app.get('/api/collections', async (request,response) => {
     
@@ -56,6 +57,7 @@ app.get('/api/collections', async (request,response) => {
             const bcomcollection = db.collection(bcomcollectionName);
             const bbacollection = db.collection(bbacollectionName);
             const bsccollection = db.collection(bsccollectionName);
+            const librarycollection = db.collection(librarycollectionName)
     
             // Retrieve documents from the collection
             const bcadocuments = await bcacollection.find({}).toArray();
@@ -63,6 +65,7 @@ app.get('/api/collections', async (request,response) => {
             const bcomdocuments = await bcomcollection.find({}).toArray();
             const bbadocuments = await bbacollection.find({}).toArray();
             const bscdocuments = await bsccollection.find({}).toArray();
+            const librarydocuments = await librarycollection.find({}).toArray();
     
             // Print the documents
             console.log('Documents in the collection:');
@@ -71,20 +74,24 @@ app.get('/api/collections', async (request,response) => {
             console.log(bcomdocuments);
             console.log(bbadocuments);
             console.log(bscdocuments)
+            console.log(librarydocuments);
+            
             
             response.json({
                 BCA: bcadocuments,
                 BA: badocuments,
                 Bcom: bcomdocuments,
                 BBA:bbadocuments,
-                BSC:bscdocuments
+                BSC:bscdocuments,
+                Library:librarydocuments
             });
             response.send({
                 BCA: bcadocuments,
                 BA: badocuments,
                 Bcom: bcomdocuments,
                 BBA:bbadocuments,
-                BSC:bscdocuments
+                BSC:bscdocuments,
+                Library:librarydocuments
             });
             
         } catch (err) {
